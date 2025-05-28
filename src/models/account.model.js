@@ -18,11 +18,19 @@ const accountSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    role: {
+        type: String,
+        enum: ['user', 'distributor', 'admin'],
+        default: 'user'
+    },
     balance: {
         type: Number,
         default: 0.0
-    }
-
+    },
+    walletAddress: {
+        type: String,
+        unique: true,
+    },
 }, { timestamps: true })
 
 const Account = mongoose.model("Account", accountSchema)

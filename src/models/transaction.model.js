@@ -39,6 +39,15 @@ const transactionSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    status: {
+        type: String,
+        enum: ["pending", "approved", "rejected"],
+        default: "pending"
+    },
+    contractID: {
+        type: String,
+        unique: false,
     }
 
 }, { timestamps: true })
